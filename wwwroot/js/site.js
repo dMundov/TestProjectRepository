@@ -3,12 +3,12 @@
 
 // Write your JavaScript code.
 
-    function manage(txt) {
-        var bt = document.getElementById('btSubmit');
-        if (txt.value != '') {
-            bt.disabled = false;
-        }
-        else {
-            bt.disabled = true;
-        }
+function manage(txt) {
+    var bt = document.getElementById('btSubmit');
+    if (txt.value != '') {
+        bt.disabled = false;
     }
+    else {
+        bt.disabled = true;
+    }
+}

@@ -14,17 +14,17 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="col-form-label"></label>
-                <input type="text" id="title" onkeyup="manage(this)" asp-for="Title" class="form-control" />
+                <input type="text" id="title" onclick="manage(this)" asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ReleaseDate" class="col-form-label"></label>
-                <input id="releaseDate" onkeyup="manage(this)" asp-for="ReleaseDate" class="form-control" />
+                <input id="releaseDate" onclick="manage(this)" asp-for="ReleaseDate" class="form-control" />
                 <span asp-validation-for="ReleaseDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Genre"></label>
-                <input type="text" id="genre" onkeyup="manage(this)" asp-for="Genre" class="form-control" />
+                <input type="text" id="genre" onclick="manage(this)" asp-for="Genre" class="form-control" />
                 <span asp-validation-for="Genre" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -35,30 +35,21 @@
             </div>
             <div class="form-group">
                 <label asp-for="Price" class="col-form-label"></label>
-                <input type="text" id="price" onkeyup="manage(this)" asp-for="Price" class="form-control form-check-inline" />
+                <input type="text" id="price" onclick="manage(this)" asp-for="Price" class="form-control form-check-inline" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PosterPath" class="col-form-label">Movie Poster</label>
-                <input type="file" name="file" id="file" class="inputfile" />
-                <label for="file">Choose a file</label>
+                <div>
+                    <input type="file" name="file" id="file" class="inputfile" />
+                </div>
             </div>
             <div class="form-group">
                 <input type="submit" id="btSubmit" disabled value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
-    <script>
-        function manage(txt) {
-            var bt = document.getElementById('btSubmit');
-            if (txt.value != '') {
-                bt.disabled = false;
-            }
-            else {
-                bt.disabled = true;
-            }
-        }
-    </script>
+ 
 </div>
 
 <div>
