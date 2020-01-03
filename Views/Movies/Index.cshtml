@@ -1,0 +1,89 @@
+﻿@model WebAppTest.Models.MovieGenreViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="navbar-text">Movies Library</h1>
+
+<p>
+    <a asp-action="Create" class="btn-success btn-lg">Add New Movie</a>
+</p>
+<hr />
+<form asp-controller="Movies" asp-action="Index">
+    <p>
+        <select asp-for="MovieGenre" asp-items="Model.Genres">
+            <option value="">Select Genre</option>
+        </select>
+
+        Title: <input type="text" asp-for="SearchString" placeholder="Title for Search"/>
+        <input type="submit" value="Filter" />
+    <p />
+</form>
+<hr />
+<div class=card-deck>
+    <div class="row">
+        @foreach (var item in Model.Movies)
+        {
+            <ul class="cards">
+                <li class="cards_item">
+                    <div class="card" style="width: 15rem; position: center">
+                        <img class="card-img-top" src="@item.PosterPath" alt="Movies">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-weight: 800">@Html.DisplayFor(modelItem => item.Title)</h5>
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Details</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        }
+    </div>
+</div>
+<hr />
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Movies)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td style="position: center">
+
+                    <a style="" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
